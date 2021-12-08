@@ -17,7 +17,6 @@ const ProductScreen = () => {
 
     fetchProduct(id)
   }, [id])
-  // const product = products.find(p => p._id === id)
   return (
     <>
       <Link to='/' className='btn btn-light my-3'>
