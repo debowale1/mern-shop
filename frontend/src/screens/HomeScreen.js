@@ -8,7 +8,6 @@ const url = '/api/products'
 
 const HomeScreen = () => {
   const [products, setProducts] = useState([])
-
   const fetchProducts = async () => {
     const {data} = await axios(url, {method: 'GET'})
 
