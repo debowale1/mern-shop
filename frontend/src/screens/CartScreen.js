@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams, useNavigate, useLocation } from 'react-router-dom'
 import {Row, Col, ListGroup, Form, Image, Button, Card } from 'react-bootstrap'
 import Message from '../components/Message'
-import { addToCart } from '../actions/cartActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
 
 const CartScreen = () => {
   const params = useParams()
   const navigate = useNavigate()
   const location = useLocation()
 
-  const productId = params?.id 
+  const productId = params.id 
   const qty = location.search ? Number(location.search.split('=')[1]) : 1;
   const dispatch = useDispatch()
 
@@ -24,7 +24,9 @@ const CartScreen = () => {
     }
   }, [dispatch, productId, qty])
 
-  const removeFromCartHandler = (productId) => {}
+  const removeFromCartHandler = (productId) => {
+    dispatch(removeFromCart(productId))
+  }
   const checkoutHandler = () => {
     navigate('/login?redirect=shipping')
   }
@@ -71,7 +73,7 @@ const CartScreen = () => {
               $ ({cartItems.reduce((acc, cur) => acc + cur.qty * cur.price, 0).toFixed(2)})
             </ListGroup.Item>
             <ListGroup.Item>
-              <Button type='button' classNaem='btn-block' disabled={cartItems.length === 0} onClick={checkoutHandler}>Procees to checkout</Button>
+              <Button type='button' className='btn-block' disabled={cartItems.length === 0} onClick={checkoutHandler}>Procees to checkout</Button>
             </ListGroup.Item>
           </ListGroup>
         </Card>
