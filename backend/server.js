@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import productRouter from './routes/productRoutes.js'
+import userRouter from './routes/userRoutes.js'
 import connectDB from './config/db.js'
 import { errorHandler, notFound } from './middleware/errorMiddleware.js'
 
@@ -11,7 +12,10 @@ const app = express()
 connectDB()
 
 
+app.use(express.json( { limit: '50kb' }))
+app.use(express.urlencoded({ extended: true }))
 
+app.use('/api/users', userRouter)
 app.use('/api/products', productRouter)
 
 app.use(notFound)
