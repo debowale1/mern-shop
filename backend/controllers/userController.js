@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js'
+import generateToken  from '../utils/generateToken.js'
 
 /**
  * @desc  Auth user & get Token
@@ -15,11 +16,14 @@ import User from '../models/userModel.js'
     throw new Error('Invalid email or password')
   }
 
+  //generate token
+  const token = generateToken(user._id)
+
   res.status(200).json({
     _id: user._id,
     name: user.name,
     email: user.email,
     isAdmin: user.isAdmin,
-    token: null
+    token
   })
 })
