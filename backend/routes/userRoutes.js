@@ -1,13 +1,13 @@
 import express from 'express'
-import { authUser } from '../controllers/userController.js'
+import { authUser, getUserProfile } from '../controllers/userController.js'
 // import { registerUser, getAllUsers, authUser, getUserProfile, updateUserProfile, deleteUser, getUserById, updateUser } from '../controllers/userController.js'
-// import { protect, restrictTo } from '../middleware/authMiddleware.js'
+import { protect } from '../middleware/authMiddleware.js'
 
 const router = express.Router()
 
 router.post('/login', authUser)
 // router.use(protect)
-// router.route('/profile').get(protect, getUserProfile).patch(protect, updateUserProfile)
+router.route('/profile').get(protect, getUserProfile)
 
 // router.route('/').get(protect, restrictTo('admin'), getAllUsers).post(registerUser)
 
