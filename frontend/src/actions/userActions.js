@@ -21,3 +21,11 @@ export const login  = (email, password) => async (dispatch) => {
       payload:  error.response && error.response.data.message ? error.response.data.message : error.message })
   }
 }
+
+export const logout = () => (dispatch) => {
+  localStorage.removeItem('userInfo')
+    dispatch({type: userConstants.USER_LOGOUT})
+    // dispatch({type: USER_DETAILS_RESET})
+    // dispatch({type: ORDER_LIST_MY_RESET})
+    // dispatch({type: USER_LIST_RESET})
+}

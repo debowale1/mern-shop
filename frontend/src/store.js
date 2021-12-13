@@ -22,7 +22,6 @@ const initialState = {
   cart: { cartItems: cartItemsFromStorage },
   userInfo: { userInfo: userInfoFromStorage }
 }
-
 const middleware = [thunk]
 
 
