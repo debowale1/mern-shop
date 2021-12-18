@@ -8,15 +8,15 @@ import { cartReducer } from './reducers/cartReducers'
 
 
 const reducers = combineReducers({
-  productList: productListReducer,
-  productDetails: productDetailsReducer,
-  cart:           cartReducer,
-  userLogin:      userLoginReducer,
-  userRegister:   userRegisterReducer,
-  userDetails:   userDetailsReducer,
-  userUpdateProfile:   userUpdateProfileReducer,
-  orderCreate:   orderCreateReducer,
-  orderDetails:   orderDetailsReducer,
+  productList:        productListReducer,
+  productDetails:     productDetailsReducer,
+  cart:               cartReducer,
+  userLogin:          userLoginReducer,
+  userRegister:       userRegisterReducer,
+  userDetails:        userDetailsReducer,
+  userUpdateProfile:  userUpdateProfileReducer,
+  orderCreate:        orderCreateReducer,
+  orderDetails:       orderDetailsReducer,
 
 })
 

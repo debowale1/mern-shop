@@ -1,4 +1,4 @@
-import * as orderConstants from '../constants/orderConstants.js'
+import * as orderConstants from '../constants/orderConstants'
 
 export const orderCreateReducer = (state = {}, action) => {
   switch(action.type){
@@ -22,7 +22,7 @@ export const orderCreateReducer = (state = {}, action) => {
       return state
   }
 }
-export const orderDetailsReducer = (state = { orderItems: [], shippingAddress: {} }, action) => {
+export const orderDetailsReducer = (state = { loading: true, orderItems: [], shippingAddress: {} }, action) => {
   switch(action.type){
     case orderConstants.ORDER_DETAILS_REQUEST:
       return {

@@ -37,7 +37,7 @@ export const register  = (name, email, password) => async (dispatch) => {
 
     const config = {
       headers: {
-        'Content-type': 'application/json'
+        'Content-Type': 'application/json'
       }
     }
 
