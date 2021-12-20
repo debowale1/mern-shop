@@ -70,3 +70,12 @@ export const updateOrderToPaid = asyncHandler(async (req, res) => {
     throw new Error('There was a problem updating the order')
     return
 })
+/**
+ * @desc  Get logged in user orders
+ * @route /api/orders/myOrders
+ * @access  private
+ */
+export const getMyOrders = asyncHandler(async (req, res) => {
+    const orders = await Order.find({ user: req.user._id})
+    res.json(orders)
+})

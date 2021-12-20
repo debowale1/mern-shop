@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import { productListReducer, productDetailsReducer } from './reducers/productReducers'
 import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer } from './reducers/userReducers'
-import { orderCreateReducer, orderDetailsReducer, orderPayReducer } from './reducers/orderReducers'
+import { orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListMyReducer } from './reducers/orderReducers'
 import { cartReducer } from './reducers/cartReducers'
 
 
@@ -17,7 +17,8 @@ const reducers = combineReducers({
   userUpdateProfile:  userUpdateProfileReducer,
   orderCreate:        orderCreateReducer,
   orderDetails:       orderDetailsReducer,
-  orderPay:       orderPayReducer,
+  orderPay:           orderPayReducer,
+  orderListMy:       orderListMyReducer,
 
 })
 
