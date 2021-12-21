@@ -28,7 +28,7 @@ export const logout = () => (dispatch) => {
     dispatch({type: userConstants.USER_LOGOUT})
     dispatch({type: userConstants.USER_DETAILS_RESET})
     dispatch({type: orderConstants.ORDER_LIST_MY_RESET})
-    // dispatch({type: USER_LIST_RESET})
+    dispatch({type: userConstants.USER_LIST_RESET})
 }
 
 
