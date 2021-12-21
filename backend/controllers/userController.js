@@ -89,6 +89,8 @@ import generateToken  from '../utils/generateToken.js'
      throw new Error('User not found')
    }
 })
+
+
 /**
  * @desc  Update Profile
  * @route PUT /api/users/profile
@@ -117,4 +119,15 @@ import generateToken  from '../utils/generateToken.js'
      throw new Error('User not found')
 
    }
+})
+
+
+/**
+ * @desc  Get all users
+ * @route GET /api/users/
+ * @access  private/admin
+ */
+ export const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find()
+  res.status(200).json(users)
 })
