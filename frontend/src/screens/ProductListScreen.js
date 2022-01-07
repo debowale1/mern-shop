@@ -4,8 +4,9 @@ import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from './../components/Loader'
 import Message from '../components/Message'
-import { listProducts, deleteProduct } from '../actions/productActions'
+import { listProducts, deleteProduct, createProduct } from '../actions/productActions'
 import { useNavigate } from 'react-router-dom'
+import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
 
 const ProductListScreen = () => {
@@ -21,20 +22,29 @@ const ProductListScreen = () => {
   const productDelete = useSelector(state => state.productDelete)
   const { laoding:loadingDelete, success:successDelete, error:errorDelete } = productDelete
 
+  const productCreate = useSelector(state => state.productCreate)
+  const { laoding:loadingCreate, success:successCreate, error:errorCreate, product:createdProduct } = productCreate
+
   useEffect(() => {
-    if(userInfo && userInfo.isAdmin){
+    dispatch({ type: PRODUCT_CREATE_RESET })
+
+    if(successCreate){ 
+      navigate(`/admin/product/${createdProduct._id}/edit`)
+    }else if(userInfo && userInfo.isAdmin){
       dispatch(listProducts())
     }else{
       navigate('/login')
     }
-  }, [dispatch, userInfo, navigate, successDelete])
+  }, [dispatch, userInfo, navigate, successDelete, successCreate, createdProduct])
 
   const deleteHandler = (id) => {
     if(window.confirm('Are you sure?')){
       dispatch(deleteProduct(id))
     }
   }
-  const createProductHandler = () => {}
+  const createProductHandler = () => {
+    dispatch(createProduct())
+  }
 
   return (
     <>
@@ -49,7 +59,9 @@ const ProductListScreen = () => {
         </Col>
       </Row>
       {loadingDelete && <Loader />}
+      {loadingCreate && <Loader />}
       {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
+      {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
       {loading ? <Loader /> : error ? <Message variant='danger' >{error}</Message> : (
          <Table striped bordered hover responsive className='table-sm'>
            <thead>
