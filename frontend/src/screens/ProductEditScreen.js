@@ -83,6 +83,15 @@ const ProductEditScreen = () => {
             onChange={(e) => setPrice(e.target.value)}>
           </Form.Control>
         </Form.Group>
+        <Form.Group controlId='description'>
+          <Form.Label>Description</Form.Label>
+          <Form.Control 
+            type='text' 
+            placeholder='enter price' 
+            value={description} 
+            onChange={(e) => setDescription(e.target.value)}>
+          </Form.Control>
+        </Form.Group>
         <Form.Group controlId='category'>
           <Form.Label>Category</Form.Label>
           <Form.Control 
