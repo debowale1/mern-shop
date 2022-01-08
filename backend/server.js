@@ -26,7 +26,7 @@ app.use('/api/upload', uploadRouter)
 app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))
 
 const __dirname = path.resolve()
-app.use(express.static(path.join(__dirname, '/uploads')))
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 app.use(notFound)
 app.use(errorHandler)

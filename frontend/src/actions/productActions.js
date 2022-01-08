@@ -91,6 +91,9 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     const {userLogin: { userInfo } } = getState()
     const config = {
       headers: {
+        headers: {
+          'Content-Type': 'application/json'
+        },
         Authorization: `Bearer ${userInfo.token}`
 
       }
