@@ -32,7 +32,8 @@ function App() {
             <Route path='/shipping' element={<ShippingScreen />} />
             <Route path='/payment' element={<PaymentScreen />} />
             <Route path='/placeorder' element={<PlaceOrderScreen />} />
-            <Route path='/admin/productlist' element={<ProductListScreen />} />
+            <Route path='/admin/productlist' exact element={<ProductListScreen />} />
+            <Route path='/admin/productlist/:pageNumber' exact element={<ProductListScreen />} />
             <Route path='/admin/userlist' element={<UserListScreen />} />
             <Route path='/admin/orderlist' element={<OrderListScreen />} />
             <Route path='/admin/product/:id/edit' element={<ProductEditScreen />} />
@@ -40,7 +41,9 @@ function App() {
             <Route path='/product/:id' element={<ProductScreen />} />
             <Route path='/cart' element={<CartScreen />} />
             <Route path='/cart/:id' element={<CartScreen />} />
-            <Route path='/search/:keyword' element={<HomeScreen />} />
+            <Route path='/search/:keyword' element={<HomeScreen />} exact />
+            <Route path='/search/:keyword/page/pageNumber' element={<HomeScreen />} />
+            <Route path='/page/:pageNumber' element={<HomeScreen />} />
             <Route path='/' exact element={<HomeScreen />} />
           </Routes>
         </Container>
