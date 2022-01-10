@@ -8,7 +8,7 @@ import Product from '../models/productModel.js'
  * @access  public
  */
 export const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 2
+  const pageSize = 10
   const page = Number(req.query.pageNumber) || 1
 
   const keyword = req.query.keyword ? {
@@ -137,5 +137,15 @@ export const deleteProduct = asyncHandler(async (req, res) => {
     res.status(404)
     throw new Error('Prooduct not found!')
   }
+
+})
+/**
+ * @desc  Get top-rated products
+ * @route GET /api/products/top
+ * @access  public
+ */
+ export const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find().sort({rating: -1}).limit(3)
+  res.json(products)
 
 })
