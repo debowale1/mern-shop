@@ -10,7 +10,7 @@ const reviewSchema = Schema({
     type: String,
     required: true,
   },
-  review: {
+  comment: {
     type: String,
     required: true,
     trim: true
@@ -20,7 +20,12 @@ const reviewSchema = Schema({
     required: true,
     min: 1,
     max: 5
-  } 
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User',
+  },
 }, 
 {
   timeStamps: true,
