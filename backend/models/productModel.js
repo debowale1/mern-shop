@@ -28,7 +28,7 @@ const reviewSchema = Schema({
   },
 }, 
 {
-  timeStamps: true,
+  timestamps: true,
 })
 
 const productSchema = Schema({
