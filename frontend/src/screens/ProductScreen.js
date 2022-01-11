@@ -5,6 +5,7 @@ import { Row, Col, Button, Image, ListGroup, Card, Form } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
+import Meta from '../components/Meta'
 import { listProductDetails, createProductReview } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
@@ -63,6 +64,7 @@ const submitHandler = (e) => {
       </Link>
       { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
         <>
+        <Meta title={`Mern Shop | ${product.name}`} />
         <Row>
           <Col md={6}>
             <Image src={product.image} alt={product.name} fluid />
@@ -126,7 +128,7 @@ const submitHandler = (e) => {
                 <ListGroup.Item key={review._id}>
                   <strong>{review.name}</strong>
                   <Rating value={review.rating} />
-                  <p>{review.createdAt.substring(0, 10)}</p>
+                  <p>{review.createdAt?.substring(0, 10)}</p>
                   <p>{review.comment}</p>
                 </ListGroup.Item>
               ))}
